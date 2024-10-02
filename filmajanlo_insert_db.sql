@@ -48,7 +48,7 @@ INSERT INTO sorozatok (cim, rendezo_id, iro_id, kategoria_id, studio_id, leiras,
 
 -- velemenyek tábla adatai
 INSERT INTO velemenyek (felhasznalo_id, mu_id, velemeny, datum) VALUES
-(1, 1, 'nagyon izgalmas film, imádtam a dinoszauruszokat!', '2024-10-01'),
+(1, 1, 'dino goes brrrrrrrrrrrrr!', '2024-10-01'),
 (2, 2, 'bonyolult, de nagyon elgondolkodtató történet.', '2024-10-02');
 
 -- film_szinesz kapcsoló tábla adatai
