@@ -1,0 +1,37 @@
+<script setup>
+import Signin from "./components/Signin.vue";
+</script>
+
+<template>
+  <main>
+    <Signin />
+  </main>
+</template>
+
+<style>
+@import url("https://fonts.cdnfonts.com/css/berlin-sans-fb-demi");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --black: rgb(12, 11, 0);
+  --white: rgb(252, 247, 247);
+  --blue: rgb(18, 139, 181);
+  --yellow: rgb(222, 181, 34);
+  --grey: rgb(163, 158, 158);
+}
+body {
+  background-color: var(--black);
+  font-family: "Berlin Sans FB Demi", sans-serif;
+  color: var(--white);
+  text-align: center;
+}
+header {
+  background-color: var(--black);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+</style>
