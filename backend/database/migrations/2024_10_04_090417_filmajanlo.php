@@ -13,52 +13,52 @@ return new class extends Migration
     {
         Schema::create('felhasznalok', function (Blueprint $table) {
             $table->id()->primary();
-            $table->varchar('nev', 255);
-            $table->varchar('email', 255)->unique();
-            $table->varchar('jelszo',255);
-            $table->varchar('profil_kep',255)->nullable();
+            $table->string('nev', 255);
+            $table->string('email', 255)->unique();
+            $table->string('jelszo',255);
+            $table->string('profil_kep',255)->nullable();
             $table->timestamps('regisztracios_datum');
         });
 
         Schema::create('kategoriak', function (Blueprint $table) {
             $table->id()->primary();
-            $table->varchar('nev', 255);
+            $table->string('nev', 255);
         });
 
         Schema::create('studio', function (Blueprint $table) {
             $table->id()->primary();
-            $table->varchar('nev', 255);
+            $table->string('nev', 255);
         });
 
         Schema::create('szinesz', function (Blueprint $table) {
             $table->id()->primary();
-            $table->varchar('nev', 255);
+            $table->string('nev', 255);
             $table->text('ismerteto');
             $table->date('szuldatum');
         });
 
         Schema::create('iro', function (Blueprint $table) {
             $table->id()->primary();
-            $table->varchar('nev', 255);
+            $table->string('nev', 255);
             $table->text('ismerteto');
             $table->date('szuldatum');
         });
 
         Schema::create('rendezo', function (Blueprint $table) {
             $table->id()->primary();
-            $table->varchar('nev', 255);
+            $table->string('nev', 255);
             $table->text('ismerteto');
             $table->date('szuldatum');
         });
 
         Schema::create('filmek', function (Blueprint $table) {
             $table->id()->primary();
-            $table->varchar('cim', 255);
+            $table->string('cim', 255);
             $table->text('leiras');
             $table->year('kiadasi_ev');
-            $table->varchar('boritokep_url', 255);
-            $table->varchar('link_netflix', 255);
-            $table->varchar('link_hbo', 255);
+            $table->string('boritokep_url', 255);
+            $table->string('link_netflix', 255);
+            $table->string('link_hbo', 255);
             $table->foreignId('rendezo_id')->constrained('rendezo');
             $table->foreignId('iro_id')->constrained('iro');
             $table->foreignId('kategoriak_id')->constrained('kategoriak');
@@ -67,12 +67,12 @@ return new class extends Migration
 
         Schema::create('sorozatok', function (Blueprint $table) {
             $table->id()->primary();
-            $table->varchar('cim', 255);
+            $table->string('cim', 255);
             $table->text('leiras');
             $table->year('kiadasi_ev');
-            $table->varchar('boritokep_url', 255);
-            $table->varchar('link_netflix', 255);
-            $table->varchar('link_hbo', 255);
+            $table->string('boritokep_url', 255);
+            $table->string('link_netflix', 255);
+            $table->string('link_hbo', 255);
             $table->foreignId('rendezo_id')->constrained('rendezo');
             $table->foreignId('iro_id')->constrained('iro');
             $table->foreignId('kategoriak_id')->constrained('kategoriak');
