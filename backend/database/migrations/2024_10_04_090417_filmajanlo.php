@@ -12,47 +12,47 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('felhasznalok', function (Blueprint $table) {
-            $table->id()->primary();
+            $table->id();
             $table->string('nev', 255);
             $table->string('email', 255)->unique();
-            $table->string('jelszo',255);
-            $table->string('profil_kep',255)->nullable();
-            $table->timestamps('regisztracios_datum');
+            $table->string('jelszo', 255);
+            $table->string('profil_kep', 255)->nullable();
+            $table->timestamp('regisztracios_datum')->useCurrent();
         });
 
         Schema::create('kategoriak', function (Blueprint $table) {
-            $table->id()->primary();
+            $table->id();
             $table->string('nev', 255);
         });
 
         Schema::create('studio', function (Blueprint $table) {
-            $table->id()->primary();
+            $table->id();
             $table->string('nev', 255);
         });
 
         Schema::create('szinesz', function (Blueprint $table) {
-            $table->id()->primary();
+            $table->id();
             $table->string('nev', 255);
             $table->text('ismerteto');
             $table->date('szuldatum');
         });
 
         Schema::create('iro', function (Blueprint $table) {
-            $table->id()->primary();
+            $table->id();
             $table->string('nev', 255);
             $table->text('ismerteto');
             $table->date('szuldatum');
         });
 
         Schema::create('rendezo', function (Blueprint $table) {
-            $table->id()->primary();
+            $table->id();
             $table->string('nev', 255);
             $table->text('ismerteto');
             $table->date('szuldatum');
         });
 
         Schema::create('filmek', function (Blueprint $table) {
-            $table->id()->primary();
+            $table->id();
             $table->string('cim', 255);
             $table->text('leiras');
             $table->year('kiadasi_ev');
@@ -66,7 +66,7 @@ return new class extends Migration
         });
 
         Schema::create('sorozatok', function (Blueprint $table) {
-            $table->id()->primary();
+            $table->id();
             $table->string('cim', 255);
             $table->text('leiras');
             $table->year('kiadasi_ev');
@@ -80,29 +80,27 @@ return new class extends Migration
         });
 
         Schema::create('velemeny', function (Blueprint $table) {
-            $table->id()->primary();
+            $table->id();
             $table->text('velemeny');
             $table->timestamp('datum');
             $table->foreignId('felhasznalo_id')->constrained('felhasznalok');
-            $table->foreignId('mu_id')->constrained('filmek')->constrained('sorozatok');
+            $table->foreignId('film_id')->nullable()->constrained('filmek');
+            $table->foreignId('sorozat_id')->nullable()->constrained('sorozatok');
         });
 
         Schema::create('film_szinesz', function (Blueprint $table) {
-            $table->id('film_id');
-            $table->id('szinesz_id');
-            $table->primary(['film_id', 'szinesz_id']);
             $table->foreignId('film_id')->constrained('filmek');
             $table->foreignId('szinesz_id')->constrained('szinesz');
+            $table->primary(['film_id', 'szinesz_id']);
         });
 
         Schema::create('sorozat_szinesz', function (Blueprint $table) {
-            $table->id('sorozat_id');
-            $table->id('szinesz_id');
-            $table->primary(['sorozat_id', 'szinesz_id']);
             $table->foreignId('sorozat_id')->constrained('sorozatok');
             $table->foreignId('szinesz_id')->constrained('szinesz');
+            $table->primary(['sorozat_id', 'szinesz_id']);
         });
     }
+
 
     /**
      * Reverse the migrations.
