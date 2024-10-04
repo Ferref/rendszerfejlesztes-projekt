@@ -1,4 +1,32 @@
-<script setup></script>
+<script setup>
+import { ref } from 'vue';
+import axios  from 'axios';
+
+const email = ref('');
+const password = ref('');
+const error = ref('');
+const user = ref({});
+
+const login = () =>
+{
+  if(!email.value || !password.value)
+  {
+    error.value = 'Töltsd ki az összes mezőt!';
+    return;
+  }
+
+  axios.post("http://127.0.0.1:8000/api/users/login", {
+    email: email.value,
+    jelszo: password.value
+  }).then(resp =>
+  {
+    user.value = resp.data.user;
+    user.token = resp.data.user.token;
+    console.log(user.value, user.token);
+  })
+    .catch(err => error.value = 'Hibás email vagy jelszó!');
+}
+</script>
 
 <template>
   <header>
@@ -10,8 +38,9 @@
   </header>
   <main>
     <div class="form-container">
-      <form id="signup" class="sign-in-form">
+      <form @submit.prevent="login" id="signup" class="sign-in-form">
         <h2 class="title">Sign in</h2>
+        {{ error }}
         <div class="input-field">
           <div>
             <label for="email">Email</label>
@@ -24,6 +53,7 @@
           </div>
           <input type="password" required v-model="password" />
         </div>
+        <input type="submit" class="btn" value="Sign in" />
         <!-- <input type="submit" class="btn" value="Sign in" /> -->
         <p>---------- or ----------</p>
         <input type="submit" class="btn" value="Create a new account" />

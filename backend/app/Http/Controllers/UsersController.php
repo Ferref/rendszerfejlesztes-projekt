@@ -21,7 +21,7 @@ class UsersController extends Controller
         if (!$user || !Hash::check($password, $password ? $user->jelszo : '')) {
             return response([
                 'message' => 'Invalid email or password'
-            ], 404);
+            ], 401);
         }
 
         //régi token törlése és új létrehozása
