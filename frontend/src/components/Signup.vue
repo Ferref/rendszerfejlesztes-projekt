@@ -74,7 +74,7 @@ const register = () =>
         <input type="submit" class="btn" value="Create account" />
       </form>
     </div>
-    <p>Already have an account? <a>sign in</a></p>
+    <p>Already have an account? <a href="Signin.vue">sign in</a></p>
   </main>
 </template>
 

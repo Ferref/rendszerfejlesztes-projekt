@@ -12,8 +12,7 @@ import Signup from "./components/Signup.vue";
     </div>
   </header>
   <main>
-    <Signup />
-    <!-- <Signin /> -->
+    
   </main>
 </template>
 

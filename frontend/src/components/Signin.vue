@@ -69,19 +69,19 @@ form {
 }
 .sign-in-form {
   border: #333 solid 3px;
-  max-width: 500px;
+  min-width: 450px;
 }
 .form-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 70vh;
+  height: 80vh;
 }
 label {
-  position: relative;
-  top: 1.4rem;
   color: var(--white);
   font-size: 1.2rem;
+  position: relative;
+  top: 1.4rem;
 }
 
 .input-field {
@@ -91,10 +91,8 @@ label {
   margin: 10px 10px 0px 10px;
   height: 45px;
   border-radius: 5px;
-  display: block;
-  grid-template-columns: 15% 85%;
-  padding: 0.7rem;
-  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .input-field input {
@@ -105,6 +103,8 @@ label {
   font-weight: 600;
   font-size: 1.1rem;
   color: var(--white);
+  height: 100%;
+  padding: 0.7rem;
 }
 .btn {
   width: fit-content;
