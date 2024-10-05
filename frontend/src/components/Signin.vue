@@ -1,58 +1,49 @@
 <!-- SCRIPT -->
 <script setup>
-import { ref } from 'vue';
-import axios  from 'axios';
+import { ref } from "vue";
+import axios from "axios";
 
-const email = ref('');
-const password = ref('');
-const error = ref('');
+const email = ref("");
+const password = ref("");
+const error = ref("");
 const user = ref({});
 
-const login = () =>
-{
-  if(!email.value || !password.value)
-  {
-    error.value = 'Töltsd ki az összes mezőt!';
+const login = () => {
+  if (!email.value || !password.value) {
+    error.value = "Töltsd ki az összes mezőt!";
     return;
   }
 
-  axios.post("http://127.0.0.1:8000/api/users/login", {
-    email: email.value,
-    jelszo: password.value
-  }).then(resp =>
-  {
-    user.value = resp.data.user;
-    user.token = resp.data.user.token;
-    console.log(user.value, user.token);
-  })
-    .catch(err => error.value = 'Hibás email vagy jelszó!');
-}
+  axios
+    .post("http://127.0.0.1:8000/api/users/login", {
+      email: email.value,
+      jelszo: password.value,
+    })
+    .then((resp) => {
+      user.value = resp.data.user;
+      user.token = resp.data.user.token;
+      console.log(user.value, user.token);
+    })
+    .catch((err) => (error.value = "Hibás email vagy jelszó!"));
+};
 </script>
 
 <!-- TEMPLATE -->
 <template>
-  <header>
-    <img src="../assets/logo.svg" alt="logo" />
-    <div class="topnav">
-      <a class="active" href="#Menu">Menu</a>
-      <input type="text" placeholder="Search..." />
-    </div>
-  </header>
   <main>
     <div class="form-container">
       <form @submit.prevent="login" id="signup" class="sign-in-form">
         <h2 class="title">Sign in</h2>
         {{ error }}
-        <label for="email" class="elabel">Email</label>
+        <label for="email">Email address</label>
         <div class="input-field">
           <input type="email" required v-model="email" />
         </div>
-        <label for="password" class="plabel">Password</label>
+        <label for="password">Password</label>
         <div class="input-field">
-        <input type="password" required v-model="password" />
+          <input type="password" required v-model="password" />
         </div>
         <input type="submit" class="btn" value="Sign in" />
-        <!-- <input type="submit" class="btn" value="Sign in" /> -->
         <p>---------- or ----------</p>
         <input type="submit" class="btn" value="Create a new account" />
       </form>
@@ -63,10 +54,6 @@ const login = () =>
 
 <!-- STYLE -->
 <style scoped>
-header {
-  display: flex;
-}
-
 form {
   display: flex;
   align-items: center;
@@ -90,16 +77,10 @@ form {
   height: 70vh;
 }
 label {
-  position:relative;
+  position: relative;
   top: 1.4rem;
   color: var(--white);
   font-size: 1.2rem;
-}
-.elabel{
-  right:6.1rem;
-}
-.plabel{
-  right:5.1rem;
 }
 
 .input-field {

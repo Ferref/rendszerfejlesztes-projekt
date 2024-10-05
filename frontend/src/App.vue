@@ -1,10 +1,19 @@
 <script setup>
 import Signin from "./components/Signin.vue";
+import Signup from "./components/Signup.vue";
 </script>
 
 <template>
+  <header>
+    <img src="../src/assets/logo.svg" alt="logo" />
+    <div class="topnav">
+      <a class="active" href="#Menu">Menu</a>
+      <input type="text" placeholder="Search..." />
+    </div>
+  </header>
   <main>
-    <Signin />
+    <Signup />
+    <!-- <Signin /> -->
   </main>
 </template>
 
@@ -31,7 +40,12 @@ body {
 header {
   background-color: var(--black);
   color: white;
-  padding: 1rem;
+  margin-bottom: 30px;
   text-align: center;
+  display: flex;
+}
+header img{
+  width: 80px;
+  height: 80px;
 }
 </style>
