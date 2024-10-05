@@ -1,3 +1,4 @@
+<!-- SCRIPT -->
 <script setup>
 import { ref } from 'vue';
 import axios  from 'axios';
@@ -28,12 +29,13 @@ const login = () =>
 }
 </script>
 
+<!-- TEMPLATE -->
 <template>
   <header>
     <img src="../assets/logo.svg" alt="logo" />
     <div class="topnav">
       <a class="active" href="#Menu">Menu</a>
-      <input type="text" placeholder="Search.." />
+      <input type="text" placeholder="Search..." />
     </div>
   </header>
   <main>
@@ -41,17 +43,13 @@ const login = () =>
       <form @submit.prevent="login" id="signup" class="sign-in-form">
         <h2 class="title">Sign in</h2>
         {{ error }}
+        <label for="email" class="elabel">Email</label>
         <div class="input-field">
-          <div>
-            <label for="email">Email</label>
-          </div>
           <input type="email" required v-model="email" />
         </div>
+        <label for="password" class="plabel">Password</label>
         <div class="input-field">
-          <div>
-            <label for="password">Password</label>
-          </div>
-          <input type="password" required v-model="password" />
+        <input type="password" required v-model="password" />
         </div>
         <input type="submit" class="btn" value="Sign in" />
         <!-- <input type="submit" class="btn" value="Sign in" /> -->
@@ -63,6 +61,7 @@ const login = () =>
   <footer></footer>
 </template>
 
+<!-- STYLE -->
 <style scoped>
 header {
   display: flex;
@@ -91,20 +90,28 @@ form {
   height: 70vh;
 }
 label {
+  position:relative;
+  top: 1.4rem;
   color: var(--white);
   font-size: 1.2rem;
+}
+.elabel{
+  right:6.1rem;
+}
+.plabel{
+  right:5.1rem;
 }
 
 .input-field {
   max-width: 380px;
   width: 100%;
   background-color: var(--grey);
-  margin: 10px;
+  margin: 10px 10px 0px 10px;
   height: 45px;
   border-radius: 5px;
-  display: grid;
+  display: block;
   grid-template-columns: 15% 85%;
-  padding: 0 0.4rem;
+  padding: 0.7rem;
   position: relative;
 }
 
