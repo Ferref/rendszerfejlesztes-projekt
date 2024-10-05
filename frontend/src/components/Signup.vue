@@ -143,9 +143,6 @@ label {
   object-fit: cover;
 }
 
-input[type="file"] {
-}
-
 p {
   color: var(--white);
   font-size: 1.2rem;
