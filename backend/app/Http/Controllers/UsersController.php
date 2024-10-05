@@ -8,6 +8,37 @@ use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
+    public function register(Request $request)
+    {
+        $email = $request->input('email');
+        $nev = $request->input('nev');
+        $jelszo = $request->input('jelszo');
+
+        $request->validate([
+            'email' => 'required|email',
+            'nev' => 'required',
+            'jelszo' => 'required',
+        ]);
+
+        if(User::where('email', $email)->exists()) {
+            return response([
+                'message' => 'Email already exists'
+            ], 409);
+        }
+
+        $user = User::create([
+            'email' => $email,
+            'nev' => $nev,
+            'jelszo' => Hash::make($jelszo),
+            'profil_kep' => null,
+            'regisztracios_datum' => now(),
+        ]);
+
+        return response([
+            'user' => $user,
+        ]);
+    }
+
     public function login(Request $request)
     {
         $email = $request->input('email');

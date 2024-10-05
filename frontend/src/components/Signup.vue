@@ -2,7 +2,9 @@
 import { ref } from "vue";
 import axios from "axios";
 const email = ref("");
+const username = ref("");
 const password = ref("");
+const repassword = ref("");
 const error = ref("");
 </script>
 
@@ -12,19 +14,19 @@ const error = ref("");
       <form @submit.prevent="login" id="signup" class="sign-in-form">
         <h2 class="title">Create your account</h2>
         {{ error }}
-        <label for="email" class="elabel">Email address</label>
+        <label for="email">Email address</label>
         <div class="input-field">
           <input type="email" required v-model="email" />
         </div>
-        <label for="username" class="ulabel">Username</label>
+        <label for="username">Username</label>
         <div class="input-field">
           <input type="text" required v-model="username" />
         </div>
-        <label for="password" class="plabel">Password</label>
+        <label for="password">Password</label>
         <div class="input-field">
           <input type="password" required v-model="password" />
         </div>
-        <label for="repassword" class="replabel">Re-enter password</label>
+        <label for="repassword">Re-enter password</label>
         <div class="input-field">
           <input type="password" required v-model="repassword" />
         </div>
