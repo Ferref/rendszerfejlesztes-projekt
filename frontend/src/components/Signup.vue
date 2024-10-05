@@ -2,16 +2,41 @@
 import { ref } from "vue";
 import axios from "axios";
 const email = ref("");
-const username = ref("");
-const password = ref("");
-const repassword = ref("");
+const nev = ref("");
+const jelszo = ref("");
+const jelszo2 = ref("");
 const error = ref("");
+
+const register = () =>
+{
+  if (!email.value || !nev.value || !jelszo.value || !jelszo2.value)
+  {
+    error.value = "Tölts ki minden mezőt!";
+    return;
+  }
+  if (jelszo.value != jelszo2.value)
+  {
+    error.value = "A két jelszó nem egyezik!";
+    return;
+  }
+
+  axios
+    .post("http://localhost:8000/api/users/register", {
+      email: email.value,
+      nev: nev.value,
+      jelszo: jelszo.value,
+    }).then((resp) => {
+      console.log(resp.data);
+    }).catch((err) => {
+      error.value = "Hiba a regisztráció során!";
+    });
+}
 </script>
 
 <template>
   <main>
     <div class="form-container">
-      <form @submit.prevent="login" id="signup" class="sign-in-form">
+      <form @submit.prevent="register" id="signup" class="sign-in-form">
         <h2 class="title">Create your account</h2>
         {{ error }}
         <label for="email">Email address</label>
@@ -20,26 +45,31 @@ const error = ref("");
         </div>
         <label for="username">Username</label>
         <div class="input-field">
-          <input type="text" required v-model="username" />
+          <input type="text" required v-model="nev" />
         </div>
         <label for="password">Password</label>
         <div class="input-field">
-          <input type="password" required v-model="password" />
+          <input type="password" required v-model="jelszo" />
         </div>
         <label for="repassword">Re-enter password</label>
         <div class="input-field">
-          <input type="password" required v-model="repassword" />
+          <input type="password" required v-model="jelszo2" />
         </div>
         <!-- profilkép feltöltés -->
-        <p>Upload your profile picteure:<br>(optional)</p>
+        <p>Upload your profile picteure:<br />(optional)</p>
         <div class="profilepic">
-            <div class="img-holder">
-                <img src="" id="img" alt="profile picture" />
-            </div>
-            <div>
-                <p>Upload picture</p>
-                <input type="file" id="profilepic" name="profilepic" accept="image/*">
-            </div>
+          <div class="img-holder">
+            <img src="" id="img" alt="profile picture" />
+          </div>
+          <div>
+            <p>Upload picture</p>
+            <input
+              type="file"
+              id="profilepic"
+              name="profilepic"
+              accept="image/*"
+            />
+          </div>
         </div>
         <input type="submit" class="btn" value="Create account" />
       </form>
@@ -155,6 +185,4 @@ p {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
-
-
 </style>

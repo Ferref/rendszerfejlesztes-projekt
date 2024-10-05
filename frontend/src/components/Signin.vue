@@ -8,6 +8,7 @@ const password = ref("");
 const error = ref("");
 const user = ref({});
 
+/* BEJELENTKEZÉS */
 const login = () => {
   if (!email.value || !password.value) {
     error.value = "Töltsd ki az összes mezőt!";
