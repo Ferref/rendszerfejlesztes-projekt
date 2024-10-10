@@ -38,8 +38,8 @@ A projekt további célja, hogy a felhasználók számára teljes körű adminis
 
 ## 2. Szerepkörök Felosztása
 
-- **Frontend tervező/fejlesztő**: Tervezés hangsúly, HTML, Tailwind CSS, Vue.js alapú frontend komponensek készítése.
-- **Frontend fejlesztő**: HTML, Tailwind CSS, Vue.js alapú frontend komponensek készítése.
+- **Frontend tervező/fejlesztő**: Tervezés hangsúly, HTML, (Bootstrap), CSS, Vue.js alapú frontend komponensek készítése.
+- **Frontend fejlesztő**: HTML, (Bootstrap), CSS, Vue.js alapú frontend komponensek készítése.
 - **Backend fejlesztő**: PHP alapú backend fejlesztés, adatbázis kezelés.
 - **Fullstack fejlesztő**: Frontend és backend fejlesztés kombinációja, valamint dokumentáció és prezentáció készítése.
 
@@ -63,7 +63,7 @@ A projekt további célja, hogy a felhasználók számára teljes körű adminis
 
 ### Frontend
 
-Elsődlegesen a Tailwind CSS keretrendszer által nyújtott layout és komponensek használata. Saját CSS csak abban az esetben, ha a kívánt dizájn elérését Tailwind CSS kijelölőkkel nem lehet megvalósítani. Színek, betűtípusok és elrendezés előre meghatározott sablon alapján, konzisztensen, egy egységes dizájn érdekében.
+CSS és a Bootstrap keretrendszer által nyújtott layout és komponensek használata. 
 
 1. **Főoldal**
    - Keresés
